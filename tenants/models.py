@@ -2,7 +2,12 @@ from django.db import models
 
 class Tenant(models.Model):
     name = models.CharField(max_length=255)
-    # Otros campos relevantes para tu tenant
+    subdomain = models.CharField(max_length=100, unique=True, default='default_subdomain')
+class TenantAwareModel(models.Model):
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.name
+class Member(TenantAwareModel):
+    name = models.CharField(max_length=255)
+
+   # def __str__(self):
+      #  return self.name
