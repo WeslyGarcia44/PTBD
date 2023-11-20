@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db import models
 from tenants.models import Tenant
 
+
 class GeneroVideojuego(models.Model):
     #tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, null=True)
     nombre = models.CharField(max_length=255, primary_key=True)
